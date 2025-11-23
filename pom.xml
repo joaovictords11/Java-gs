@@ -6,10 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.exemplo</groupId>
-    <artifactId>patio-api</artifactId>
+    <artifactId>work-connect</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>PatioAPI</name>
-    <description>Sistema de registro de check-in e check-out das motos no pátio</description>
+    <name>WorkConnect</name>
+    <description>API para Comunidade Colaborativa de Aprendizagem</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -136,7 +136,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>patio-api</finalName>
+        <finalName>work-connect</finalName>
     </build>
 
 </project>

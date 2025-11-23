@@ -1,12 +1,12 @@
-package com.exemplo.patio;
+package com.exemplo.work;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PatioApplication {
+public class WorkConnectApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PatioApplication.class, args);
+        SpringApplication.run(WorkConnectApplication.class, args);
     }
 }

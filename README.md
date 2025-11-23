@@ -1,6 +1,6 @@
-# 🚀 Pátio Api - API Check-in e Check-out de Motos
+# 🚀 Work Connect - Plataforma Colaborativa de Aprendizagem
 
-Este projeto é uma API REST desenvolvida em Java 17 utilizando Spring Boot, que tem como objetivo gerenciar o check-in e check-out de motos em um pátio. O sistema permite o cadastro de motos e o controle de suas movimentações (entrada e saída).
+Este projeto é uma API REST desenvolvida em Java 17 utilizando Spring Boot, criada para servir como backend de uma aplicação mobile para uma Comunidade Colaborativa de Aprendizagem. O objetivo é resolver o problema da falta de redes de apoio entre trabalhadores, permitindo o compartilhamento de dicas, cursos e oportunidades.
 
 ## 🏗️ Tecnologias Utilizadas
 
@@ -12,31 +12,27 @@ Este projeto é uma API REST desenvolvida em Java 17 utilizando Spring Boot, que
 - Bean Validation
 - Lombok
 - Maven
-- Docker
 - Tratamento centralizado de erros com ExceptionHandler
 
 ## 🔗 Endpoints Disponíveis
 
-### 🏍️ Motos
-- `GET /motos` — Lista todas as motos (com paginação e ordenação)
-- `POST /motos` — Cadastra uma nova moto
-- `GET /motos/search?placa={placa}` — Busca moto pela placa (com paginação)
+### 👤 Usuários (Trabalhadores/Estudantes)
+- `POST /usuarios/cadastro` — Cadastra um novo usuário na plataforma.
+- `POST /usuarios/login` — Realiza a autenticação (retorna os dados do usuário).
+- `GET /usuarios/{id}` — Obtém o perfil de um usuário específico.
 
-### 📄 Registros (Movimentações)
-- `POST /registros/checkin` — Realiza o check-in da moto no pátio
-- `PUT /registros/checkout` — Realiza o check-out da moto
-- `GET /registros?placa={placa}` — Lista os registros de uma moto (com paginação)
+### 💡 Dicas e Conteúdos
+- `GET /dicas` — Lista todas as dicas compartilhadas (com paginação).
+- `GET /dicas?busca={termo}` — Filtra dicas pelo título.
+- `POST /dicas` — Cria uma nova dica/postagem (requer ID do autor).
+- `DELETE /dicas/{id}` — Remove uma dica.
 
 ## 📦 Entidades
 
-- `Moto`: placa, modelo
-- `Registro`: data e hora de check-in e check-out, associado à moto
+- `Usuario`: nome, email, senha, profissão.
+- `Dica`: título, descrição, categoria, data de criação e autor (usuário).
 
-## 🔗 Relacionamento
-
-- Uma moto pode ter vários registros de entrada e saída.
-
-## ⚙️ Como Executar (Deploy e Testes)
+## ⚙️ Como Executar
 
 **Pré-requisitos:**
 - Java 17 (JDK)
@@ -46,34 +42,30 @@ Este projeto é uma API REST desenvolvida em Java 17 utilizando Spring Boot, que
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/joaovictords11/Devops-sprint3.git
-    cd Devops-sprint3
+    git clone https://github.com/joaovictords11/Java-gs.git
     ```
 
 2.  **Compile e empacote o projeto:**
-    Use o Maven para gerar o arquivo `.jar`.
     ```bash
     mvn clean package
     ```
 
 3.  **Execute a aplicação:**
-    Após a compilação, o arquivo `.jar` estará na pasta `target/`. Execute-o com o seguinte comando:
     ```bash
-    java -jar target/patio-api.jar
+    java -jar target/work-connect.jar
     ```
 
 4.  A API estará disponível em `http://localhost:8080`.
 
-## 🧪 Teste via API
+## 🧪 Exemplos de Uso (cURL)
 
-### Cadastrar uma nova moto
-
-**Endpoint:** `POST /motos`
+### Cadastrar Usuário
 ```bash
-curl -X POST http://localhost:8080/motos \
+curl -X POST http://localhost:8080/usuarios/cadastro \
 -H "Content-Type: application/json" \
 -d '{
-  "placa": "BRA2E19",
-  "modelo": "Honda PCX 150"
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "senha": "123",
+  "profissao": "Desenvolvedor"
 }'
-

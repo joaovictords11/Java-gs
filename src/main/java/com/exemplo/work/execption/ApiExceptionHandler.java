@@ -1,4 +1,4 @@
-package com.exemplo.patio.execption;
+package com.exemplo.work.execption;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
