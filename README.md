@@ -126,6 +126,11 @@ Endpoint: /usuarios/cadastro
 }
 ```
 
+5. Excluir Usuário (DELETE)
+   Endpoint: /usuarios/{id} 
+
+Nota: Não requer corpo na requisição (JSON).
+
 ### 💡 Dicas (/dicas)
 
 1. Criar Nova Dica (POST)
@@ -169,3 +174,8 @@ Nota: O autorId deve ser o ID de um usuário existente.
   }
 }
 ```
+
+4. Excluir Dica (DELETE)
+   Endpoint: /dicas/{id} 
+
+Nota: Não requer corpo na requisição (JSON).
