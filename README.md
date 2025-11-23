@@ -76,3 +76,96 @@ curl -X POST http://localhost:8080/usuarios/cadastro \
   "senha": "123",
   "profissao": "Desenvolvedor"
 }'
+```
+
+## 📝 Exemplos de JSON (CRUD)
+Abaixo estão os modelos de JSON para interagir com os endpoints da API.
+
+### 👤 Usuários (/usuarios)
+
+1. Cadastrar Usuário (POST)
+Endpoint: /usuarios/cadastro
+```
+{
+  "nome": "Maria Souza",
+  "email": "maria.souza@email.com",
+  "senha": "senhaSegura123",
+  "profissao": "Designer Gráfico"
+}
+```
+
+2. Login (POST)
+   Endpoint: /usuarios/login
+```
+{
+  "email": "maria.souza@email.com",
+  "senha": "senhaSegura123"
+}
+```
+
+3. Atualizar Perfil (PUT)
+   Endpoint: /usuarios/{id}
+```
+{
+  "nome": "Maria Souza Editada",
+  "email": "maria.nova@email.com",
+  "senha": "novaSenha456",
+  "profissao": "UX Designer"
+}
+```
+
+4. Resposta de Exemplo (GET)
+   Endpoint: /usuarios/{id}
+```
+{
+  "id": 1,
+  "nome": "Maria Souza",
+  "email": "maria.souza@email.com",
+  "senha": "senhaSegura123",
+  "profissao": "Designer Gráfico"
+}
+```
+
+### 💡 Dicas (/dicas)
+
+1. Criar Nova Dica (POST)
+   Endpoint: /dicas 
+
+Nota: O autorId deve ser o ID de um usuário existente.
+```
+{
+  "titulo": "Melhores ferramentas para Prototipagem",
+  "descricao": "Uma lista com as ferramentas mais usadas no mercado, como Figma e Adobe XD.",
+  "categoria": "Design",
+  "autorId": 1
+}
+```
+
+2. Atualizar Dica (PUT)
+   Endpoint: /dicas/{id}
+```
+{
+  "titulo": "Ferramentas de Prototipagem Atualizadas",
+  "descricao": "Inclusão do Sketch na lista de ferramentas.",
+  "categoria": "UX/UI",
+  "autorId": 1
+}
+```
+
+3. Resposta de Exemplo (GET)
+   Endpoint: /dicas ou /dicas/{id}
+```
+{
+  "id": 10,
+  "titulo": "Melhores ferramentas para Prototipagem",
+  "descricao": "Uma lista com as ferramentas mais usadas no mercado, como Figma e Adobe XD.",
+  "categoria": "Design",
+  "dataCriacao": "2024-05-20T14:30:00",
+  "autor": {
+    "id": 1,
+    "nome": "Maria Souza",
+    "email": "maria.souza@email.com",
+    "profissao": "Designer Gráfico"
+  }
+}
+```
