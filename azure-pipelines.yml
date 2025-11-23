@@ -1,0 +1,29 @@
+pool:
+  name: Azure Pipelines
+  demands: maven
+
+steps:
+  - task: qetza.replacetokens.replacetokens-task.replacetokens@6
+    displayName: 'Replace tokens'
+    inputs:
+      sources: '**/application.properties'
+      tokenPattern: octopus
+
+  - task: Maven@4
+    displayName: 'Maven pom.xml'
+    inputs:
+      jdkVersionOption: 1.17
+
+  - task: CopyFiles@2
+    displayName: 'Copy files to staging folder'
+    inputs:
+      SourceFolder: '$(system.defaultworkingdirectory)'
+      Contents: '**/*.jar'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+    condition: succeededOrFailed()
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+    condition: succeededOrFailed()
