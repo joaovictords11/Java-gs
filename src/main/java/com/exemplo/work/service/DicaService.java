@@ -9,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -31,6 +32,18 @@ public class DicaService {
                 .orElseThrow(() -> new EntityNotFoundException("Autor não encontrado"));
 
         Dica dica = new Dica(null, dto.getTitulo(), dto.getDescricao(), dto.getCategoria(), LocalDateTime.now(), autor);
+        return dicaRepo.save(dica);
+    }
+
+    @Transactional
+    public Dica atualizar(Long id, DicaDto dto) {
+        Dica dica = dicaRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Dica não encontrada"));
+
+        dica.setTitulo(dto.getTitulo());
+        dica.setDescricao(dto.getDescricao());
+        dica.setCategoria(dto.getCategoria());
+
         return dicaRepo.save(dica);
     }
 

@@ -17,15 +17,22 @@ Este projeto é uma API REST desenvolvida em Java 17 utilizando Spring Boot, cri
 ## 🔗 Endpoints Disponíveis
 
 ### 👤 Usuários (Trabalhadores/Estudantes)
-- `POST /usuarios/cadastro` — Cadastra um novo usuário na plataforma.
-- `POST /usuarios/login` — Realiza a autenticação (retorna os dados do usuário).
-- `GET /usuarios/{id}` — Obtém o perfil de um usuário específico.
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `POST` | `/usuarios/cadastro` | Cadastra um novo usuário na plataforma. |
+| `POST` | `/usuarios/login` | Realiza a autenticação (retorna os dados do usuário e ID). |
+| `GET` | `/usuarios/{id}` | Retorna os dados do perfil de um usuário específico. |
+| `PUT` | `/usuarios/{id}` | **(Novo)** Atualiza os dados do perfil (nome, email, profissão). |
+| `DELETE` | `/usuarios/{id}` | **(Novo)** Exclui a conta do usuário. |
 
-### 💡 Dicas e Conteúdos
-- `GET /dicas` — Lista todas as dicas compartilhadas (com paginação).
-- `GET /dicas?busca={termo}` — Filtra dicas pelo título.
-- `POST /dicas` — Cria uma nova dica/postagem (requer ID do autor).
-- `DELETE /dicas/{id}` — Remove uma dica.
+### 💡 Dicas (Feed de Conteúdo)
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `GET` | `/dicas` | Lista todas as dicas (suporta paginação). |
+| `GET` | `/dicas?busca={termo}` | Filtra dicas pelo título (barra de pesquisa). |
+| `POST` | `/dicas` | Cria uma nova publicação de dica ou curso. |
+| `PUT` | `/dicas/{id}` | **(Novo)** Edita o título, descrição ou categoria de uma dica. |
+| `DELETE` | `/dicas/{id}` | **(Novo)** Remove uma dica do feed. |
 
 ## 📦 Entidades
 

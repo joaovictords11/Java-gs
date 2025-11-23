@@ -33,4 +33,15 @@ public class UsuarioController {
     public ResponseEntity<Usuario> obterPerfil(@PathVariable Long id) {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioDto dto) {
+        return ResponseEntity.ok(service.atualizar(id, dto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        service.excluir(id);
+        return ResponseEntity.noContent().build();
+    }
 }

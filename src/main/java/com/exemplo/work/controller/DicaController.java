@@ -37,6 +37,11 @@ public class DicaController {
         return ResponseEntity.ok(service.criar(dto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Dica> atualizar(@PathVariable Long id, @RequestBody @Valid DicaDto dto) {
+        return ResponseEntity.ok(service.atualizar(id, dto));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluir(id);
