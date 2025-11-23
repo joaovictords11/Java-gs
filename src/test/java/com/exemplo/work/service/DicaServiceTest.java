@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,7 +61,7 @@ class DicaServiceTest {
         dto.setCategoria("Tecnologia");
         dto.setAutorId(1L);
 
-        Usuario autor = new Usuario(1L, "João", "joao@email.com", "123", "Dev");
+        Usuario autor = new Usuario(1L, "João", "joao@email.com", "123", "Dev", new ArrayList<>());
 
         when(usuarioRepository.findById(1L)).thenReturn(Optional.of(autor));
         when(dicaRepository.save(any(Dica.class))).thenAnswer(invocation -> {

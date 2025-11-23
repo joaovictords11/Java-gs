@@ -8,6 +8,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Service
 public class UsuarioService {
     private final UsuarioRepository repo;
@@ -20,7 +22,7 @@ public class UsuarioService {
         if(repo.findByEmail(dto.getEmail()).isPresent()) {
             throw new IllegalStateException("Email já cadastrado");
         }
-        Usuario usuario = new Usuario(null, dto.getNome(), dto.getEmail(), dto.getSenha(), dto.getProfissao());
+        Usuario usuario = new Usuario(null, dto.getNome(), dto.getEmail(), dto.getSenha(), dto.getProfissao(), new ArrayList<>());
         return repo.save(usuario);
     }
 

@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -73,7 +74,7 @@ class UsuarioServiceTest {
         login.setEmail("maria@teste.com");
         login.setSenha("123");
 
-        Usuario usuarioBanco = new Usuario(1L, "Maria", "maria@teste.com", "123", "Designer");
+        Usuario usuarioBanco = new Usuario(1L, "Maria", "maria@teste.com", "123", "Designer", new ArrayList<>());
         when(usuarioRepository.findByEmailAndSenha(login.getEmail(), login.getSenha()))
                 .thenReturn(Optional.of(usuarioBanco));
 
